@@ -1,6 +1,8 @@
 package com.alexiesracca.excercises.datastructures;
 
-public class BinaryTree{
+import java.util.Arrays;
+
+public class BinaryTree {
 
     public static void main(String [] args){
         test();
@@ -8,23 +10,24 @@ public class BinaryTree{
 
     public static void test(){
 
-        System.out.println("Start Binary Search Tree Test");
+        System.out.println("\n==[Start Binary Search Tree Test]==");
 
         BinaryTree bt = new BinaryTree();
         Node root = null;
-        System.out.println("Insert data");
-        root = bt.insert(root, 'A');
-        root = bt.insert(root, 'Z');
-        root = bt.insert(root, 'X');
-        root = bt.insert(root, 'S');
-        root = bt.insert(root, '1');
-        root = bt.insert(root, '6');
-        root = bt.insert(root, 'F');
-        root = bt.insert(root, 'C');
 
-        System.out.println("Traverse Tree");
-        System.out.println("In Order");
+        char [] charset = {'A','X','Z','1','Y','B'};
+    
+        System.out.println("Insert "+ Arrays.toString(charset));
+        for(char c : charset ){
+            root = bt.insert(root, c);
+        }
+
+        System.out.println("\n[Traverse Tree - PreOrder]");
+        bt.preOrder(root);
+        System.out.println("\n[Traverse Tree - In Order]");
         bt.traverseInOrder(root);
+        System.out.println("\n[Traverse Tree - PostOrder]");
+        bt.postOrder(root);
 
     }
 
@@ -39,6 +42,14 @@ public class BinaryTree{
         return node;
     }
 
+
+    public void preOrder(Node node){
+        if(node == null ) return;
+        System.out.print(node.data + " ");
+        preOrder(node.left);
+        preOrder(node.right);
+    }
+
     public void traverseInOrder(Node node){
         if(node == null ) return;
         traverseInOrder(node.left);
@@ -46,8 +57,12 @@ public class BinaryTree{
         traverseInOrder(node.right);
     }
 
-}
-
+    public void postOrder(Node node){
+        if(node == null ) return;
+        postOrder(node.left);
+        postOrder(node.right);
+        System.out.print(node.data + " ");
+    }
 
 class Node<T extends Comparable<T>>{
     Node left;
@@ -61,5 +76,9 @@ class Node<T extends Comparable<T>>{
     }
 
 }
+
+
+}
+
 
 

@@ -1,6 +1,7 @@
 package com.alexiesracca.excercises;
 
 import com.alexiesracca.excercises.datastructures.BinaryTree;
+import com.alexiesracca.excercises.datastructures.LinkedList;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,13 +12,7 @@ public class MachineProblems {
 	public static void main(String[] args) {
 		SpringApplication.run(MachineProblems.class, args);
 
-		String x = "testtext";
-		String y = "testtext";
-		String z = new String("testtext");
-		System.out.println("testtext" == x);
-		System.out.println(y == x);
-		System.out.println(z == x);
-
+		LinkedList.test();
 		BinaryTree.test();
 	}
 
