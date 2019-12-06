@@ -14,7 +14,7 @@ public class PriorityQueue {
     public static void main(String[] args) { test(); }
 
     public static void test(){
-        System.out.println("\n===[Priority Queue - Binary Heap Implementation using Array]===");
+        System.out.println("\n\n===[Priority Queue - Binary Heap Implementation using Array]===");
         System.out.println("Initial Array > " + Arrays.toString(heap));
 
         int [] dataset = {1,2,3,4,5,6,7,8,9,10};
