@@ -11,16 +11,14 @@ public class LinkedList {
     public static void test(){
         System.out.println("\n===[Linked List Tests]===");
         System.out.println("[Insert and Traverse]");
-        head = insert(null, 1);
-        insert(head, 2);
-        insert(head, 3);
-        insert(head, 4);
-        insert(head, 5);
-        insert(head, 6);
-        insert(head, 7);
-        insert(head, 8);
-        insert(head, 9);
-        insert(head, 10);
+        head = null; 
+
+         int [] dataset = {1,2,3,4,5,6,7,8,9,10};
+    
+        for(int i : dataset ){
+            head = insert(head, i);
+        }
+
         traverse(head);
 
         System.out.println("\n[Remove 4]");
