@@ -87,9 +87,9 @@ public class BinaryTree {
 
         while(queue.size() > 0){
             Node enqueued = queue.remove();
-            System.out.print(enqueued.data+ " ");
             if(enqueued.left!=null) queue.add(enqueued.left);
             if(enqueued.right!=null) queue.add(enqueued.right);
+            System.out.print(enqueued.data+ " ");
         }
 
 
