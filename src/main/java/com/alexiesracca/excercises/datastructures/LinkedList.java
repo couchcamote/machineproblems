@@ -2,7 +2,7 @@ package com.alexiesracca.excercises.datastructures;
 
 public class LinkedList {
 
-    static Node head = null;
+    static TwoWayNode head = null;
 
     public static void main (String []args) {
         test();
@@ -39,12 +39,12 @@ public class LinkedList {
 
     }
 
-    public static Node insert(Node node, int data){
+    public static TwoWayNode insert(TwoWayNode node, int data){
         if (node == null){
-            node = new Node(data);
+            node = new TwoWayNode(data);
         }else{
             if(node.next == null){
-                node.next = new Node(data);
+                node.next = new TwoWayNode(data);
             }
             else{
                 node.next = insert(node.next, data);
@@ -53,7 +53,7 @@ public class LinkedList {
         return node;
     }
 
-    public static Node remove(Node node, int data){
+    public static TwoWayNode remove(TwoWayNode node, int data){
         if(node ==null) return null;
         if(node.data == data){
             node = node.next;
@@ -67,7 +67,7 @@ public class LinkedList {
         return node;
     }
 
-    public static void traverse(Node node){
+    public static void traverse(TwoWayNode node){
         if(node == null) return;
         System.out.print(node.data+ " ");
         traverse(node.next);
@@ -77,7 +77,7 @@ public class LinkedList {
 
 class Node{
     int data;
-    Node next;
+    TwoWayNode next;
     public Node(int data){
         this.data = data;
         next = null;

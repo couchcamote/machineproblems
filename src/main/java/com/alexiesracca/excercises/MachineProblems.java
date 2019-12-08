@@ -3,6 +3,7 @@ package com.alexiesracca.excercises;
 import com.alexiesracca.excercises.datastructures.BinaryTree;
 import com.alexiesracca.excercises.datastructures.LinkedList;
 import com.alexiesracca.excercises.datastructures.PriorityQueue;
+import com.alexiesracca.excercises.datastructures.Queue;
 import com.alexiesracca.excercises.datastructures.Stack;
 import com.alexiesracca.excercises.datastructures.StackUsingArray;
 
@@ -16,6 +17,7 @@ public class MachineProblems {
 		SpringApplication.run(MachineProblems.class, args);
 
 		LinkedList.test();
+		Queue.test();
 		Stack.test();
 		StackUsingArray.test();
 		BinaryTree.test();

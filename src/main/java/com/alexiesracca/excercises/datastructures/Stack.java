@@ -5,7 +5,7 @@ package com.alexiesracca.excercises.datastructures;
  */
 public class Stack {
 
-static Node head = null;
+static TwoWayNode head = null;
 
 public static void main(String[] args) {
     test();
@@ -31,10 +31,10 @@ public static void test(){
 
 public static void push(int data){
     if(head == null){
-        head = new Node(data);
+        head = new TwoWayNode(data);
         return;
     }
-    Node newNode = new Node(data);
+    TwoWayNode newNode = new TwoWayNode(data);
     newNode.next = head;
     head = newNode;
 }
@@ -43,7 +43,7 @@ public static void pop(){
     head = head.next;
 }
 
-public static void traverse(Node node){
+public static void traverse(TwoWayNode node){
     if(node == null) return;
     System.out.print(node.data+ " ");
     traverse(node.next);
@@ -52,11 +52,11 @@ public static void traverse(Node node){
 
 }
 
-class Node {
+class TwoWayNode {
     int data;
-    Node next ;
+    TwoWayNode next ;
 
-    Node(int data){
+    TwoWayNode(int data){
         this.data = data;
         next = null;
     }
