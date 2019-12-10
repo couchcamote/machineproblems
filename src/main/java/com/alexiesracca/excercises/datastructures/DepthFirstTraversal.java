@@ -1,9 +1,11 @@
+package com.alexiesracca.excercises.datastructures;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
 
-public class DepthFirstSearch {
+public class DepthFirstTraversal {
 
     public static void main(String[] args) {
         test();
@@ -13,15 +15,15 @@ public class DepthFirstSearch {
 
         System.out.println("\n===[Depth First Traversal]===");
 
-        DFSNode node40 =new DFSNode(40);
-		DFSNode node10 =new DFSNode(10);
-		DFSNode node20 =new DFSNode(20);
-		DFSNode node30 =new DFSNode(30);
-		DFSNode node60 =new DFSNode(60);
-		DFSNode node50 =new DFSNode(50);
-        DFSNode node70 =new DFSNode(70);
+        BFNode node40 =new BFNode(40);
+		BFNode node10 =new BFNode(10);
+		BFNode node20 =new BFNode(20);
+		BFNode node30 =new BFNode(30);
+		BFNode node60 =new BFNode(60);
+		BFNode node50 =new BFNode(50);
+        BFNode node70 =new BFNode(70);
         
-        DFSNode [] allNodes = {node40, node10, node20,  node30, node60, node50, node70};
+        BFNode [] allNodes = {node40, node10, node20,  node30, node60, node50, node70};
  
 		node40.addNeighbor(node10);
 		node40.addNeighbor(node20);
@@ -34,7 +36,7 @@ public class DepthFirstSearch {
 		node60.addNeighbor(node70);
         node50.addNeighbor(node70);
 
-        DepthFirstSearch dfsInstance = new DepthFirstSearch();
+        DepthFirstTraversal dfsInstance = new DepthFirstTraversal();
 
         System.out.println("\n[Depth First Traversal - using Recursion]");
         dfsInstance.dfs(node40);
@@ -44,45 +46,45 @@ public class DepthFirstSearch {
        
     }
 
-    private void resetNode(DFSNode[] nodes){
+    private void resetNode(BFNode[] nodes){
         
-        for(DFSNode node : nodes){
+        for(BFNode node : nodes){
             node.visited = false;
         }        
     }   
 
-    public void dfs(DFSNode node){
+    public void dfs(BFNode node){
         if(node == null) return;
 
         System.out.print(node.data + " ");
         node.visited = true;
 
-        for(DFSNode neighbor : node.getNeighbors()){
+        for(BFNode neighbor : node.getNeighbors()){
             if(!neighbor.visited){
                 dfs(neighbor);
             }
         }
     }
 
-    public void dfsWithStack(DFSNode node){
+    public void dfsWithStack(BFNode node){
 
         if(node == null) return;
 
-        Stack <DFSNode> stack = new Stack<DFSNode>();
+        Stack <BFNode> stack = new Stack<BFNode>();
 
         stack.push(node);
 
         while(!stack.empty()){
-            DFSNode current = stack.pop();
+            BFNode current = stack.pop();
 
             if(!current.visited){
                 System.out.print(current.data + " ");
                 current.visited = true;
             }
 
-            List<DFSNode> neighbors = current.getNeighbors();
+            List<BFNode> neighbors = current.getNeighbors();
 
-            for(DFSNode neighbor : neighbors){
+            for(BFNode neighbor : neighbors){
                 if(!neighbor.visited){
                     stack.push(neighbor);
                 }
@@ -98,26 +100,26 @@ public class DepthFirstSearch {
 }
 
 
-class DFSNode{
+class BFNode{
 
     int data;
     boolean visited;
-    List<DFSNode> neighbors;
+    List<BFNode> neighbors;
 
-    public DFSNode(int data){
+    public BFNode(int data){
         this.data = data;
-        this.neighbors = new ArrayList<DFSNode>();
+        this.neighbors = new ArrayList<BFNode>();
     }
 
-    public void addNeighbor(DFSNode neighborNode){
+    public void addNeighbor(BFNode neighborNode){
         neighbors.add(neighborNode);
     }
 
-    public void setNeighbors(List<DFSNode> neighbors){
+    public void setNeighbors(List<BFNode> neighbors){
         this.neighbors = neighbors;
     }
 
-    public List<DFSNode> getNeighbors() {
+    public List<BFNode> getNeighbors() {
         return neighbors;
     }
 }
