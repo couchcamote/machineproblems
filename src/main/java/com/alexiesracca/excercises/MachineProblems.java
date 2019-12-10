@@ -1,11 +1,14 @@
 package com.alexiesracca.excercises;
 
 import com.alexiesracca.excercises.datastructures.BinaryTree;
+import com.alexiesracca.excercises.datastructures.DijkstraShortestPath;
 import com.alexiesracca.excercises.datastructures.LinkedList;
 import com.alexiesracca.excercises.datastructures.PriorityQueue;
 import com.alexiesracca.excercises.datastructures.Queue;
 import com.alexiesracca.excercises.datastructures.Stack;
 import com.alexiesracca.excercises.datastructures.StackUsingArray;
+import com.alexiesracca.excercises.numbers.ExtractDigits;
+import com.alexiesracca.excercises.strings.Palindrome;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,12 +19,20 @@ public class MachineProblems {
 	public static void main(String[] args) {
 		SpringApplication.run(MachineProblems.class, args);
 
+		//Data Strcutures
 		LinkedList.test();
 		Queue.test();
 		Stack.test();
 		StackUsingArray.test();
 		BinaryTree.test();
 		PriorityQueue.test();
+		DijkstraShortestPath.test();
+
+		//Number Problems
+		ExtractDigits.test();
+
+		//String Operations
+		Palindrome.test();
 	}
 
 }
