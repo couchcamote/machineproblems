@@ -49,6 +49,65 @@ public class BinaryTree {
         return node;
     }
 
+    public Node findAndremove(Node root, int data){
+        //find the data
+        boolean found = findThis(data);
+        if(found){
+            remove(root, data);
+        }
+        return root;
+    }
+
+    public boolean find(){
+
+    }
+
+    public Node remove (Node node, int data){
+        if(node == null) return null;
+        if(node.data.compareTo(data) > 0){
+            node.left = remove(node.left, data);
+        }else if(node.data.compareTo(data) < 0){
+            node.right = remove(node.right, data);
+        }else{
+            //scenarios
+            if(node.left == null){
+                Node rightChild = node.right;
+                node.data = null;
+                node = null;
+                return rightChild;
+            }else if(node.right == null){
+                Node leftChild = node.left;
+                node.data = null;
+                node = null;
+                return leftChild;
+            }else{
+                //smallest value in right sub tree 
+                //or biggest value in left subtree
+                Node min = findMin(node.right);
+                //copy value
+                node.data = min.data;
+
+                //remove orig node
+                node.right = remove(node.right, data);
+            }
+        }
+
+        return node;
+    }
+
+    private Node findMin(Node node){
+        while(node.left !=null){
+            node = node.left;
+        }
+        return node;
+    }
+
+    private Node findMax(Node node){
+        while(node.right!=null){
+            node = node.right;
+        }
+        return node;
+    }
 
     public void traversePreOrder(Node node){
         if(node == null ) return;
