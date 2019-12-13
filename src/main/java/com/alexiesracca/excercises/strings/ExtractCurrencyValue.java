@@ -19,13 +19,13 @@ public class ExtractCurrencyValue {
 
     public static List<String> extractCurrency(String currency, String text){
         List<String> l = new ArrayList<String>();
+        
+        if(currency!=null && currency.length() >  0 && text!=null && text.length() > 0) {
 
         char currencyChar = currency.toCharArray()[0];
         boolean valueStart = false;
         StringBuilder sb = new StringBuilder();
-
-            if(currency!=null && currency.length() >  0 && text!=null && text.length() > 0) {
-   
+    
                 for(char current : text.toCharArray()){
 
                     //System.out.print(current);
