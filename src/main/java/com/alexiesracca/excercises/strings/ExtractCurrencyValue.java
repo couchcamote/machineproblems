@@ -14,6 +14,7 @@ public class ExtractCurrencyValue {
     }
 
     public static void test(){
+        System.out.println("\n\n===[Extract Value by Curency");
         System.out.println(extractCurrency("$", "The pricess are $5 1 piece not €5 and this 1 is $45.00 , this one on the other hand is $ 500,000 currently, no budget meals, need to earn $ ,./.. "));
     }
 
@@ -33,12 +34,16 @@ public class ExtractCurrencyValue {
                         continue;
                     }
 
+                    if(current == ','){
+                        continue;
+                    }
+
                     if(!valueStart && current == currencyChar){
                         valueStart = true;
                         continue;
                     }
                     if(valueStart){
-                        if((Character.isDigit(current) || current == '.' || current == ',' )){
+                        if((Character.isDigit(current) || current == '.' )){
                             sb.append(current);
                             continue;
                         }else{            
