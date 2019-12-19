@@ -15,7 +15,13 @@ public class ExtractCurrencyValue {
 
     public static void test(){
         System.out.println("\n\n===[Extract Value by Curency");
-        System.out.println(extractCurrency("$", "The pricess are $5 1 piece not €5 and this 1 is $45.00 , this one on the other hand is $ 500,000 currently, no budget meals, need to earn $ ,./.. "));
+        String str = "The pricess are $5 for a piece not €5 and this 1 is $45.00 , this one on the other hand is $ 500,000 currently, no budget meals, need to earn $ ,./.. ";
+        String currency1 = "$";
+        String currency2 = "€";
+        System.out.println("Currency: "+ currency1+", Text: "+ str);
+        System.out.println(extractCurrency(currency1 , str));
+        System.out.println("Currency: "+ currency2+", Text: "+ str);
+        System.out.println(extractCurrency(currency2 , str));
     }
 
     public static List<String> extractCurrency(String currency, String text){
@@ -24,12 +30,12 @@ public class ExtractCurrencyValue {
         if(currency!=null && currency.length() >  0 && text!=null && text.length() > 0) {
 
         char currencyChar = currency.toCharArray()[0];
-        boolean valueStart = false;
+        boolean currencyFound = false;
+        boolean containsNumeric = false;
         StringBuilder sb = new StringBuilder();
     
                 for(char current : text.toCharArray()){
 
-                    //System.out.print(current);
                     if(Character.isWhitespace(current)){
                         continue;
                     }
@@ -38,20 +44,27 @@ public class ExtractCurrencyValue {
                         continue;
                     }
 
-                    if(!valueStart && current == currencyChar){
-                        valueStart = true;
+                    if(!currencyFound && current == currencyChar){
+                        currencyFound = true;
                         continue;
                     }
-                    if(valueStart){
-                        if((Character.isDigit(current) || current == '.' )){
+                    if(currencyFound){
+                        if(Character.isDigit(current)){
                             sb.append(current);
+                            containsNumeric= true;
                             continue;
-                        }else{            
-                            String str = sb.toString();    
+                        }else if(current == '.'){
+                            if(containsNumeric){
+                                sb.append(current);
+                            }
+                            continue;
+                        }else if (containsNumeric){            
+                            String str = sb.toString();  
                             if(valid(str)){
                                 l.add(str.trim());
                             }
-                            valueStart = false;
+                            currencyFound = false;
+                            containsNumeric = false;
                             sb = null;
                             sb = new StringBuilder();
                             continue;

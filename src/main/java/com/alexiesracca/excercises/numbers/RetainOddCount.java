@@ -18,6 +18,7 @@ public class RetainOddCount{
     }
 
     public static void test(){
+        System.out.println("\n==[Retain numbers with odd number of entries]==");
         int num[] = {1,2,3,2,4,5,3,6,7,5,8,5,9,5,0};
         List <Integer> list = IntStream.of(num).boxed().collect(Collectors.toList());
         System.out.println(retainEventCount(list));
