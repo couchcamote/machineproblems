@@ -51,15 +51,11 @@ public class BinaryTree {
 
     public Node findAndremove(Node root, int data){
         //find the data
-        boolean found = findThis(data);
+        boolean found =  true;//findThis(data);
         if(found){
             remove(root, data);
         }
         return root;
-    }
-
-    public boolean find(){
-
     }
 
     public Node remove (Node node, int data){
